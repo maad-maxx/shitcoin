@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Shitcoin</title>
+  <meta name="title" content="Shitcoin">
+  <meta name="description" content="We all love shitcoins, that's no secret, so it's time to hop on the one true shitcoin, $SHIT!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shitcoin.rf.gd/">
+  <meta property="og:title" content="We all love shitcoins, that's no secret, so it's time to hop on the one true shitcoin, $SHIT!">
+  <meta property="og:description" content="We all love shitcoins, that's no secret, so it's time to hop on the one true shitcoin, $SHIT!">
+  <meta property="og:image" content="https://trollface.vip/assets/images/og-full.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    @keyframes poopFall {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(100%);
+      }
+    }
+
+    .poopEmoji {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/274/pile-of-poo_1f4a9.png");
+      animation: poopFall 5s linear infinite;
+    }
+  </style>
+</head>
+<body style="background-color: skyblue;">
+<div class="header">
+  <div id="emojiContainer"></div>
+  <div class="container hero">
+    <div class="row flex-column align-items-center">
+      <div class="col-lg-6 mb-4 text-center" onclick="playRandomAudio()">
+        <img class="hero-image" src="assets/images/logo.png" alt="Hero"/>
+      </div>
+      <div class="d-flex justify-content-center align-items-center mb-4 arrow">
+        <img src="assets/images/arrow-down.svg"/>
+      </div>
+      <div class="col-lg-6 text-center">
+          <h2 class="text-center">We all love shitcoins, that's no secret, so it's time to hop on the one true shitcoin, $SHIT!</h2>
+          <div class="align-items-center flex-column flex-lg-row mt-4">
+            <a class="btn btn-outline-secondary mx-2 mb-3" href="https://t.me/Sh1tETH" target="_blank">Telegram</a>
+            <a class="btn btn-outline-secondary mx-2 mb-3" href="https://twitter.com/Shit_Co1n" target="_blank">Twitter</a>
+          </div>
+          <div class="align-items-center flex-column flex-lg-row">
+            <a class="btn btn-outline-secondary mx-2 mb-3" href="https://www.dextools.io/app/en/ether/pair-explorer/0xb7426bfd2abf64428fa82a71b0d44b056ffcc286" target="_blank">DexTools</a>
+            <a class="btn btn-outline-secondary mx-2 mb-3" href="index.html#">Buy</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function generatePoopEmojis() {
+    const emojiContainer = document.getElementById("emojiContainer");
+
+    for (let i = 0; i < 50; i++) {
+      const emoji = document.createElement("div");
+      emoji.classList.add("poopEmoji");
+      emoji.style.left = `${Math.random() * 100}vw`;
+      emoji.style.animationDuration = `${3 + Math.random() * 7}s`;
+      emoji.style.animationDelay = `${Math.random() * 5}s`;
+
+      emojiContainer.appendChild(emoji);
+    }
+  }
+
+  generatePoopEmojis();
+
+  function playRandomAudio() {
+    const audio = new Audio("/assets/2.mp3");
+    // play the audio file
+    audio.play();
+
+    // create an audio context and connect it to the audio element
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaElementSource(audio);
+    const analyser = audioContext.createAnalyser();
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+
+    // get the hero image element
+    const heroImage = document.querySelector('.hero-image');
+
+    // create a loop function to animate the hero image's scale
+    function animateHeroImage() {
+      // get the audio amplitude using the analyser
+      const dataArray = new Uint8Array(analyser.frequencyBinCount);
+      analyser.getByteFrequencyData(dataArray);
+
+      // calculate the average amplitude value
+      let sum = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        sum += dataArray[i];
+      }
+      const avgAmplitude = sum / dataArray.length;
+
+      // normalize the amplitude value
+      const normalizedAmplitude = avgAmplitude / 255;
+
+      // calculate the scale value for the hero image based on the amplitude
+      const minScale = 1;
+      const maxScale = 1.2;
+      const scale = minScale + (maxScale - minScale) * normalizedAmplitude;
+
+      // set the scale for the hero image
+      heroImage.style.transform = `scale(${scale})`;
+
+      // loop the animation, syncing with the audio amplitude
+      requestAnimationFrame(animateHeroImage);
+    }
+
+    // start the animation loop
+    animateHeroImage();
+  }
+</script>
+</body>
+<footer>
+  <div class="container pt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <p class="text-center text-lg">
+          Join our telegram and become part of our community! We have memes, lots of interesting people, and most importantly, a strong community! We will be happy to see you!
+        </p>
+        <div class="d-flex justify-content-center align-items-center flex-column flex-lg-row mt-4">
+          <a class="btn btn-outline-secondary mx-2 mb-3" href="https://t.me/Sh1tETH" target="_blank">Telegram</a>
+          <a class="btn btn-outline-secondary mx-2 mb-3" href="index.html#">Buy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>
