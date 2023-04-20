@@ -19,26 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    @keyframes poopFall {
-      0% {
-        transform: translateY(-100%);
-      }
-      100% {
-        transform: translateY(100%);
-      }
-    }
 
-    .poopEmoji {
-      position: absolute;
-      width: 32px;
-      height: 32px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-image: url("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/274/pile-of-poo_1f4a9.png");
-      animation: poopFall 5s linear infinite;
-    }
-  </style>
 </head>
 <body style="background-color: skyblue;">
 <div class="header">
@@ -66,22 +47,6 @@
   </div>
 </div>
 <script>
-  function generatePoopEmojis() {
-    const emojiContainer = document.getElementById("emojiContainer");
-
-    for (let i = 0; i < 50; i++) {
-      const emoji = document.createElement("div");
-      emoji.classList.add("poopEmoji");
-      emoji.style.left = `${Math.random() * 100}vw`;
-      emoji.style.animationDuration = `${3 + Math.random() * 7}s`;
-      emoji.style.animationDelay = `${Math.random() * 5}s`;
-
-      emojiContainer.appendChild(emoji);
-    }
-  }
-
-  generatePoopEmojis();
-
   function playRandomAudio() {
     const audio = new Audio("/assets/2.mp3");
     // play the audio file
